@@ -3,11 +3,10 @@ import Basket from './Basket';
 import Catalog from './Catalog';
 import items  from './constants/Products';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import root from './routes/root';
-import product from './routes/product';
+import {root, product, notFound } from './routes';
 import RoutesWithSubRoutes from './routes/RoutesWithSubRoutes';
 
-const routes = [root, product];
+const routes = [root, product, notFound];
 
 export default () => (
    <Router>

@@ -1,5 +1,6 @@
 import React from 'react';
 import {product} from '../helpers/routes';
+import NotFound from '../NotFound';
 import ProductCard from '../ProductCard';
 import items from '../constants/Products';
 
@@ -10,5 +11,7 @@ function getItem(id) {
 export default {
     path: product(),
     exact: true,
-    render: () => (<ProductCard item={getItem(match.params.id)}/>)
+    render:  ({match: {params}}) => (
+        getItem(params.id) ? (<ProductCard item={getItem(params.id)}/>) : (<NotFound/>)
+    )
 };
