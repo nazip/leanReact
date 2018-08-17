@@ -6,6 +6,7 @@ import { Button } from 'reactstrap';
 import ProductsTable from './ProductsTable';
 import {Redirect} from 'react-router';
 import history from './history';
+import {root} from './helpers/routes';
 
 class Basket extends React.Component {
     constructor(props) {
@@ -37,7 +38,7 @@ class Basket extends React.Component {
 
     toggle(e) {
         if(!this.state.isOpen && this.state.items.length == 0) { 
-            history.push('/products', {message: 'basket empty'});
+            history.push(root(), {message: 'basket empty'});
         }    
         this.setState({isOpen: !this.state.isOpen, 
                     left: e.clientX,
@@ -50,10 +51,6 @@ class Basket extends React.Component {
 
     render() {
         const {left, top, isOpen, items} = this.state;
-        if (isOpen && items.length == 0) {
-            console.log('isOpen', isOpen);
-            return <Redirect to='/'/>; 
-        } else
         return (
             <AppContext.Provider value = {
                 {
@@ -66,7 +63,7 @@ class Basket extends React.Component {
                         {isOpen ? 'Закрыть' : `Кол-во покупок = ${this.itemsQuantity()}`}
                     </Button>
                     }
-                    {isOpen && 
+                    { isOpen && items.length != 0 &&
                     <ShowPortal style={{left: left, top: top}}
                                         onClose={(e) => this.toggle(e)}>
                         <ProductsTable items={items} 
@@ -74,6 +71,7 @@ class Basket extends React.Component {
                         <Button onClick={(e) => this.toggle(e)}>Закрыть</Button>
                     </ShowPortal>             
                     }
+                    {isOpen && items.length == 0 && <Redirect to={root()}/>}
                     <Catalog items={this.props.items}/>
                 </Fragment>
             </AppContext.Provider> 

@@ -11,13 +11,16 @@ export default class Header extends React.Component {
     return (
       <div>
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">lean React</NavbarBrand>
+          <NavbarBrand href="/">учим React</NavbarBrand>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href='/products'>Products</NavLink>
+                <NavLink href='/'>Главная</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href='/about'>About</NavLink>
+                <NavLink href='/products'>Продукты</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href='/about'>О компании</NavLink>
               </NavItem>
             </Nav>
         </Navbar>
