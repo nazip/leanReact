@@ -15,8 +15,9 @@ export default class ShowPortal extends React.Component {
 
     clickHandle(e) {
         // click outside -> close portal
-        if(!(document.getElementById('portal').compareDocumentPosition(e.target) & 16)) {
-            this.props.onClose(e);
+        // if(!(document.getElementById('portal').compareDocumentPosition(e.target) & 16)) {
+        if(!(document.getElementById('portal').contains(e.target))) {
+                this.props.onClose(e);
         }
     } 
 
@@ -27,7 +28,7 @@ export default class ShowPortal extends React.Component {
             boxShadow: "0 0 10px rgba(0,0,0,0.5)",
             zIndex: 1000}, this.props.style);
         return ReactDOM.createPortal(
-            <div id="portal" style={{style}}>
+            <div id="portal" style={style}>
               {this.props.children}
             </div>,
             this.root

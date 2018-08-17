@@ -4,6 +4,8 @@ import Catalog from './Catalog';
 import ShowPortal from './ShowPortal';
 import { Button } from 'reactstrap';
 import ProductsTable from './ProductsTable';
+import {Redirect} from 'react-router';
+import history from './history';
 
 class Basket extends React.Component {
     constructor(props) {
@@ -34,9 +36,12 @@ class Basket extends React.Component {
     } 
 
     toggle(e) {
+        if(!this.state.isOpen && this.state.items.length == 0) { 
+            history.push('/products', {message: 'basket empty'});
+        }    
         this.setState({isOpen: !this.state.isOpen, 
-                       left: e.clientX,
-                       top: e.clientY}); 
+                    left: e.clientX,
+                    top: e.clientY}); 
     }
 
     itemsQuantity() {
@@ -45,6 +50,10 @@ class Basket extends React.Component {
 
     render() {
         const {left, top, isOpen, items} = this.state;
+        if (isOpen && items.length == 0) {
+            console.log('isOpen', isOpen);
+            return <Redirect to='/'/>; 
+        } else
         return (
             <AppContext.Provider value = {
                 {

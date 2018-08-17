@@ -1,10 +1,9 @@
 import React from 'react';
 import {root} from '../helpers/routes';
-import Basket from '../Basket';
-import items from '../constants/Products';
+import MainPage from '../MainPage';
 
 export default {
     path: root(),
     exact: true,
-    render: () => (<Basket items={items}/>)
+    render: ({history}) => (<MainPage history={history}/>)
 };
