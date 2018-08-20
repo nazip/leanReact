@@ -1,12 +1,22 @@
 import React, { Fragment } from 'react';
 import ProductCard from './ProductCard';
+import request from 'superagent';
+import Spinner from './Spinner';
 
 class Catalog extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {items: props.items}
-    } 
+        this.state = {items: []};
+    }
 
+    componentDidMount() {
+        request
+            .get('http://localhost:4321/products')
+            .end((err, res) => {
+                this.setState({items: res.body})
+      });
+    }
+    
     delItem(item, n) {
         this.setState({items:  this.state.items.map((el) => {
             if(el.quantity >= n && item.id == el.id) {
@@ -25,11 +35,14 @@ class Catalog extends React.Component {
 
     render() {
         const {items}  = this.state;
+        if (items.length == 0) {
+            return <Spinner color='blue'/>;
+        } else {
         return (
             <Fragment>
                {items.map( (item) => <ProductCard key={item.id} item={item}/>)}  
             </Fragment>      
-        );    
+        )};    
     }
 };
 

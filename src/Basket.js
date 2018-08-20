@@ -72,7 +72,7 @@ class Basket extends React.Component {
                     </ShowPortal>             
                     }
                     {isOpen && items.length == 0 && <Redirect to={root()}/>}
-                    <Catalog items={this.props.items}/>
+                    <Catalog/>
                 </Fragment>
             </AppContext.Provider> 
         );
