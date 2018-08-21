@@ -1,5 +1,6 @@
 import React, {Fragment} from 'react';
 import ReactDOM from 'react-dom';
+import { write } from 'fs';
 
 export default class ShowPortal extends React.Component {
     componentWillMount() {
@@ -25,6 +26,7 @@ export default class ShowPortal extends React.Component {
         const style= Object.assign({},{ 
             border:"1", 
             position:"absolute",
+            backgroundColor: 'f8f9fa',
             boxShadow: "0 0 10px rgba(0,0,0,0.5)",
             zIndex: 1000}, this.props.style);
         return ReactDOM.createPortal(

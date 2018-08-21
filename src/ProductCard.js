@@ -5,6 +5,7 @@ import Link from './helpers/Link';
 import {product} from './helpers/routes';
 import request from 'superagent';
 import Spinner from './Spinner';
+import host from './constants/Host';
 
 class ProductCard extends React.Component {
     constructor(props) {
@@ -21,7 +22,7 @@ class ProductCard extends React.Component {
         } else {
             this.setState({showAddToBasket: false});
             request
-            .get(`http://localhost:4321/product/${this.props.id}`)
+            .get(`${host}/product/${this.props.id}`)
             .end((err, res) => {
             this.setState({item: res.body});
             });
@@ -39,8 +40,8 @@ class ProductCard extends React.Component {
             { img.map((imageItem, i) => 
             <Link key={i} to={product(id)}>
                 <Image img={imageItem}/>
-            </Link>)
-            }
+            </Link>
+            )}
             <Price price={price}/>
             {showAddToBasket && <AddToBasket item={item}/>} 
         </div>);

@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import ProductCard from './ProductCard';
 import request from 'superagent';
 import Spinner from './Spinner';
+import host from './constants/Host';
 
 class Catalog extends React.Component {
     constructor(props) {
@@ -11,7 +12,7 @@ class Catalog extends React.Component {
 
     componentDidMount() {
         request
-            .get('http://localhost:4321/products')
+            .get(`${host}/products`)
             .end((err, res) => {
                 this.setState({items: res.body})
       });
