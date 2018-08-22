@@ -1,6 +1,6 @@
 import React from 'react';
 import {product} from '../helpers/routes';
-import ProductCardExt from '../ProductCard';
+import ProductCardExt from '../ProductCardExt';
 
 export default {
     path: product(),

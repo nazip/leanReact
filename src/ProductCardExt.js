@@ -6,6 +6,8 @@ import {product} from './helpers/routes';
 import request from 'superagent';
 import Spinner from './Spinner';
 import host from './constants/Host';
+import Carusel from './Carusel';
+import ShowPortal from './ShowPortal';
 
 class ProductCardExt extends React.Component {
     constructor(props) {
@@ -23,17 +25,16 @@ class ProductCardExt extends React.Component {
 
     render() {
         if (!this.state.item) {
-            return <Spinner/>
+            return <Spinner/>;
         }
-        const {item: {title, img, price}} = this.state;
+        const {img} = this.state.item;
         return ( 
-        <div style={{border:"1px solid blue"}}>
-            <Title title={title}/>
+        <Carusel>
             { img.map((imageItem, i) => 
-                <Image key={i} img={imageItem}/>
+                 <Image key={i} img={imageItem}  style={{className: 'carusel-child'}}/>
             )}
-            <Price price={price}/>
-        </div>);
+        </Carusel>    
+        );
     }
 };
 

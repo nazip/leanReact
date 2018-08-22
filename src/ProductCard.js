@@ -39,7 +39,7 @@ class ProductCard extends React.Component {
             <Title title={title}/>
             { img.map((imageItem, i) => 
             <Link key={i} to={product(id)}>
-                <Image img={imageItem}/>
+                <Image img={imageItem} style={{width: 'auto'}}/>
             </Link>
             )}
             <Price price={price}/>

@@ -4,6 +4,7 @@ import history from './history';
 import {root, product, products, notFound, about, RoutesWithSubRoutes } from './routes';
 import { Container, Row, Col } from 'reactstrap';
 import Header from './Header';
+import './css/app.css';
 
 const routes = [root, product, products, about, notFound];
 // const history = createBrowserHistory();
