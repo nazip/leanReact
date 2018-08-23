@@ -9,26 +9,31 @@ class Carusel extends React.Component {
     }
 
     toggle(e) {
-        this.setState({img: e.target, isOpen: !this.state.isOpen});
+        this.setState({
+            img: e.target, 
+            isOpen: !this.state.isOpen,
+            coord: {
+                left: e.clientX,
+                top: e.clientY
+            }    
+        });
     }
 
     render() {
-        console.log('this.state=',this.state);
         const {img, isOpen} = this.state;
-        return (
-            <Fragment>
-                {!isOpen &&
-                    <div className='carusel-parent' onClick={(e) => this.toggle(e)}>
-                        {this.props.children}  
-                    </div>} 
-                {isOpen &&
-                    <ShowPortal style={{left: 0, top: 0}}
-                                        onClose={(e) => this.toggle(e)}>
-                        <Image img={{src: img.src, height: '400px', width: 'auto'}}/>
-                    </ShowPortal>
-                }                              
-            </Fragment>
-        );
+        if(!isOpen) {
+            return (
+            <div className='carusel-parent' onClick={(e) => this.toggle(e)}>
+                {this.props.children}  
+            </div>);
+        } else {
+            const {left, top} = this.state.coord;
+            return (
+            <ShowPortal style={{left: left, top: top}}
+                        onClose={(e) => this.toggle(e)}>
+                <Image img={{src: img.src, height: '400px', width: 'auto'}}/>
+            </ShowPortal>);
+        }                           
     }
 }; 
 

@@ -23,6 +23,10 @@ class ProductCard extends React.Component {
             this.setState({showAddToBasket: false});
             request
             .get(`${host}/product/${this.props.id}`)
+            .timeout({
+                response: 5000,  
+                deadline: 60000, 
+            })
             .end((err, res) => {
             this.setState({item: res.body});
             });
@@ -37,11 +41,9 @@ class ProductCard extends React.Component {
         return ( 
         <div style={{border:"1px solid blue"}}>
             <Title title={title}/>
-            { img.map((imageItem, i) => 
-            <Link key={i} to={product(id)}>
-                <Image img={imageItem} style={{width: 'auto'}}/>
+            <Link to={product(id)}>
+                <Image img={img[0]} style={{width: 'auto'}}/>
             </Link>
-            )}
             <Price price={price}/>
             {showAddToBasket && <AddToBasket item={item}/>} 
         </div>);

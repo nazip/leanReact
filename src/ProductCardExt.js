@@ -18,6 +18,10 @@ class ProductCardExt extends React.Component {
     componentDidMount() {
         request
         .get(`${host}/product/${this.props.id}`)
+        .timeout({
+            response: 5000,  
+            deadline: 60000, 
+        })
         .end((err, res) => {
         this.setState({item: res.body});
         });

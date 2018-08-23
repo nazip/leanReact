@@ -3,19 +3,27 @@ import ProductCard from './ProductCard';
 import request from 'superagent';
 import Spinner from './Spinner';
 import host from './constants/Host';
+import NetworkError from './NetworkError';
 
 class Catalog extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {items: []};
+        this.state = {items: [], apiError: false};
     }
 
     componentDidMount() {
         request
             .get(`${host}/products`)
-            .end((err, res) => {
-                this.setState({items: res.body})
-      });
+            .timeout({
+                response: 10000,  
+                deadline: 60000, 
+            })
+            .then((res) => this.setState({items:res.body}),
+            (err) => {
+                if(err.timeout) {
+                    this.setState({items: [], apiError: true}) 
+                }    
+            }) 
     }
     
     delItem(item, n) {
@@ -35,11 +43,13 @@ class Catalog extends React.Component {
     } 
 
     render() {
-        const {items}  = this.state;
-        if (items.length == 0) {
+        const {items, apiError}  = this.state;
+        if (items.length == 0 && !apiError) {
             return <Spinner color='blue'/>;
+        } else if(apiError) {
+            return <NetworkError/>;
         } else {
-        return (
+            return (
             <Fragment>
                {items.map( (item) => <ProductCard key={item.id} item={item}/>)}  
             </Fragment>      
