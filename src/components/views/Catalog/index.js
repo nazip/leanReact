@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
-import ProductCard from './ProductCard';
+import Product from './Product';
 import request from 'superagent';
-import Spinner from './Spinner';
-import host from './constants/Host';
-import NetworkError from './NetworkError';
+import Spinner from '/src/components/shared/Spinner';
+import host from '/src/constants/Host';
+import NetworkError from '/src/components/shared/NetworkError';
 
 class Catalog extends React.Component {
     constructor(props) {
@@ -51,7 +51,7 @@ class Catalog extends React.Component {
         } else {
             return (
             <Fragment>
-               {items.map( (item) => <ProductCard key={item.id} item={item}/>)}  
+               {items.map( (item) => <Product key={item.id} item={item}/>)}  
             </Fragment>      
         )};    
     }

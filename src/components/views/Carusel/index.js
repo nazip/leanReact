@@ -1,6 +1,6 @@
-import React, {Fragment} from 'react';
-import ShowPortal from './ShowPortal';
-import Image from './elements/Image';
+import React from 'react';
+import Portal from '/src/components/views/Portal';
+import Image from '/src/elements/Image';
 
 class Carusel extends React.Component {
     constructor(props) {
@@ -29,10 +29,10 @@ class Carusel extends React.Component {
         } else {
             const {left, top} = this.state.coord;
             return (
-            <ShowPortal style={{left: left, top: top}}
+            <Portal style={{left: left, top: top}}
                         onClose={(e) => this.toggle(e)}>
                 <Image img={{src: img.src, height: '400px', width: 'auto'}}/>
-            </ShowPortal>);
+            </Portal>);
         }                           
     }
 }; 

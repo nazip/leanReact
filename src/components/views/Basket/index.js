@@ -1,12 +1,12 @@
 import React, {Fragment} from 'react';
-import AppContext from './AppContext';
-import Catalog from './Catalog';
-import ShowPortal from './ShowPortal';
+import AppContext from '/src/context';
+import Catalog from '/src/components/views/Catalog';
+import Portal from '/src/components/views/Portal';
 import { Button } from 'reactstrap';
-import ProductsTable from './ProductsTable';
+import ProductsTable from '/src/components/shared/ProductsTable';
 import {Redirect} from 'react-router';
-import history from './history';
-import {root} from './helpers/routes';
+import history from '/src/history';
+import {root} from '/src/helpers/routes';
 
 class Basket extends React.Component {
     constructor(props) {
@@ -64,12 +64,12 @@ class Basket extends React.Component {
                     </Button>
                     }
                     { isOpen && items.length != 0 &&
-                    <ShowPortal style={{left: left, top: top}}
+                    <Portal style={{left: left, top: top}}
                                         onClose={(e) => this.toggle(e)}>
                         <ProductsTable items={items} 
                                        delItem={(item, n) => this.delItem(item, n)}/>
                         <Button onClick={(e) => this.toggle(e)}>Закрыть</Button>
-                    </ShowPortal>             
+                    </Portal>             
                     }
                     {isOpen && items.length == 0 && <Redirect to={root()}/>}
                     <Catalog/>

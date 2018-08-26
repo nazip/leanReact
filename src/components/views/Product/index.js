@@ -1,15 +1,11 @@
-import React, {Fragment} from 'react';
-import { Image, Price, TextBox as Title, Quantity, Button } from './elements';
-import AddToBasket from './AddToBasket';
-import Link from './helpers/Link';
-import {product} from './helpers/routes';
+import React from 'react';
+import { Image } from '/src/elements';
 import request from 'superagent';
-import Spinner from './Spinner';
-import host from './constants/Host';
-import Carusel from './Carusel';
-import ShowPortal from './ShowPortal';
+import Spinner from '/src/components/shared/Spinner';
+import host from '/src/constants/Host';
+import Carusel from '/src/components/views/Carusel';
 
-class ProductCardExt extends React.Component {
+class Product extends React.Component {
     constructor(props) {
         super(props);
         this.state = {item: null};
@@ -42,4 +38,4 @@ class ProductCardExt extends React.Component {
     }
 };
 
-export default ProductCardExt;
+export default Product;

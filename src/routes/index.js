@@ -1,5 +1,7 @@
-export { default as notFound } from './notFound';
-export { default as product } from './product';
-export { default as products } from './products';
-export { default as root } from './root';
-export { default as RoutesWithSubRoutes } from './RoutesWithSubRoutes';
+import about from './about';
+import notFound from './notFound';
+import root from './root';
+import product from './product';
+import products from './products';
+
+export default [about, root, product, products, notFound];

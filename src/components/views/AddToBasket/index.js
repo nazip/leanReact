@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import AppContext from './AppContext';
+import AppContext from '/src/context';
 
 class AddToBasket extends React.Component {
   constructor(props) {

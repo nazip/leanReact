@@ -5,7 +5,7 @@ import {
   Nav,
   NavItem, NavLink } from 'reactstrap';
 // import NavLink  from './helpers/NavLink';  
-import {catalog, about, root} from './helpers/routes';
+import {catalog, about, root} from '/src/helpers/routes';
 
 export default class Header extends React.Component {
   render() {

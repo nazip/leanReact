@@ -1,9 +1,9 @@
 import React from 'react';
-import {product} from '../helpers/routes';
-import ProductCardExt from '../ProductCardExt';
+import {product} from '/src/helpers/routes';
+import Product from '/src/components/views/Product';
 
 export default {
     path: product(),
     exact: true,
-    render:  ({match: {params}}) => (<ProductCardExt id={params.id}/>)
+    render:  ({match: {params}}) => (<Product id={params.id}/>)
 };

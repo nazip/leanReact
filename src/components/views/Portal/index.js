@@ -1,8 +1,7 @@
 import React, {Fragment} from 'react';
 import ReactDOM from 'react-dom';
-import { write } from 'fs';
 
-export default class ShowPortal extends React.Component {
+export default class Portal extends React.Component {
     componentWillMount() {
         this.root = document.createElement('div');
         document.body.insertBefore(this.root, root);
@@ -16,7 +15,6 @@ export default class ShowPortal extends React.Component {
 
     clickHandle(e) {
         // click outside -> close portal
-        // if(!(document.getElementById('portal').compareDocumentPosition(e.target) & 16)) {
         if(!(document.getElementById('portal').contains(e.target))) {
                 this.props.onClose(e);
         }
