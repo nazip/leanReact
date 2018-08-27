@@ -1,5 +1,5 @@
 import React from 'react';
-import Portal from '/src/components/views/Portal';
+import Portal from '/src/components/shared/Portal';
 import Image from '/src/elements/Image';
 
 class Carusel extends React.Component {

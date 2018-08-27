@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import AppContext from '/src/context';
 import Catalog from '/src/components/views/Catalog';
-import Portal from '/src/components/views/Portal';
+import Portal from '/src/components/shared/Portal';
 import { Button } from 'reactstrap';
 import ProductsTable from '/src/components/shared/ProductsTable';
 import {Redirect} from 'react-router';
