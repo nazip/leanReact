@@ -1,8 +1,6 @@
 import React, { Fragment } from 'react';
 import Product from './Product';
-import request from 'superagent';
 import Spinner from '/src/components/shared/Spinner';
-import host from '/src/constants/Host';
 import NetworkError from '/src/components/shared/NetworkError';
 
 class Catalog extends React.Component {
@@ -10,20 +8,14 @@ class Catalog extends React.Component {
         super(props);
         this.state = {items: [], apiError: false};
     }
+   
+    componentDidUpdate() {
+        (this.props.items != this.state.items) &&                  
+            this.setState({items: this.props.items});
+    }
 
     componentDidMount() {
-        request
-            .get(`${host}/products`)
-            .timeout({
-                response: 10000,  
-                deadline: 60000, 
-            })
-            .then((res) => this.setState({items:res.body}),
-            (err) => {
-                if(err.timeout) {
-                    this.setState({items: [], apiError: true}) 
-                }    
-            }) 
+        this.props.fetchItems();
     }
     
     delItem(item, n) {

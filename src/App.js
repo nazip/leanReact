@@ -8,8 +8,6 @@ import './css/app.css';
 import {Provider} from 'react-redux';
 import store from './redux/store';
 
-console.log('store=', store.getState());
-
 export default () => (
   <Provider store={store}>
     <Router history={history}>

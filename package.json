@@ -11,6 +11,7 @@
   "dependencies": {
     "bootstrap": "^4.1.1",
     "history": "^4.7.2",
+    "memoize-one": "^4.0.0",
     "react": "^0.14.0 || ^15.0.0-0 || ^16.0.0-0",
     "react-dom": "^16.4.2",
     "react-redux": "^5.0.7",

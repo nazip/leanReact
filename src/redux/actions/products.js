@@ -1,5 +1,4 @@
 import * as types from '../const/actionTypes/products';
-import {dispatch} from 'redux';
 import request from 'superagent';
 import host from '/src/constants/Host';
 
@@ -24,20 +23,23 @@ const successProducts = (items) => {
 }
 
 export const fetchProducts = () => {
-    dispatch(requstProducts());
-    request
-    .get(`${host}/products`)
-    .timeout({
-        response: 10000,  
-        deadline: 60000, 
-    })
-    .then(
-        (res) => this.setState({items:res.body}),
-    (err) => {
-        if(err.timeout) {
-            dispatch(errorProducts('timeout'))
-        } else {     
-            dispatch(errorProducts(error))
-        }
-    }) 
+    return (dispatch) => {
+        dispatch(requstProducts());
+        return request
+        .get(`${host}/products`)
+        .timeout({
+            response: 10000,  
+            deadline: 60000, 
+        })
+        .then(
+            (res) => dispatch(successProducts(res.body)),
+            (err) => {
+                if(err.timeout) {
+                    dispatch(errorProducts('timeout'))
+                } else {     
+                    dispatch(errorProducts(error))
+                }
+            }
+        );
+    } 
 }
