@@ -12,7 +12,7 @@ export default (state = initalState, action) => {
         case type.REM_FROM_BASKET_REQUEST:
             return state;  
         case type.REM_FROM_BASKET_SUCCESS:
-            return state;  
+            return Object.assign({}, state, {items: action.items});  
         case type.REM_FROM_BASKET_ERROR:
             return state;  
         default: return state;

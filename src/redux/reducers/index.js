@@ -3,6 +3,6 @@ import products from './products';
 import basket from './basket';
 
 export default combineReducers({
-    products, 
-    basket
+    basket,
+    products 
 });

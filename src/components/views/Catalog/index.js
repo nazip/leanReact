@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import Product from './Product';
 import Spinner from '/src/components/shared/Spinner';
 import NetworkError from '/src/components/shared/NetworkError';
+import Basket from '/src/redux/containers/Basket';
 
 class Catalog extends React.Component {
     constructor(props) {
@@ -43,7 +44,8 @@ class Catalog extends React.Component {
         } else {
             return (
             <Fragment>
-               {items.map( (item) => <Product key={item.id} item={item}/>)}  
+                <Basket/>  
+                {items.map( (item) => <Product key={item.id} item={item}/>)}  
             </Fragment>      
         )};    
     }

@@ -2,17 +2,10 @@ import {connect} from 'react-redux';
 import {addItem} from '../actions/basket';
 import AddToBasket from '/src/components/views/Catalog/AddToBasket';
 
-
-const stateToProps = (state)  => (
-    {
-        items: state.basket.items
-    }    
-);
-
 const actionToProps = (dispatch) => (
     {
-        addItem: () => dispatch(addItem())
+        addItem: (item, n) => dispatch(addItem(item, n))
     }    
 );
 
-export default connect(stateToProps, actionToProps)(AddToBasket);
+export default connect(actionToProps)(AddToBasket);

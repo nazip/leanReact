@@ -15,26 +15,26 @@ class Basket extends React.Component {
         this.itemsQuantity = this.itemsQuantity.bind(this);
     }
 
-    delItem(item, n) {
-        let items = this.state.items.map((el) => {
-            if(item.id == el.id ) {
-                return Object.assign({}, el, {quantity: el.quantity-n});
-            } else return el;
-        });    
-        this.setState({items: items.filter((item) => (item.quantity > 0))});
-    }
+    // delItem(item, n) {
+    //     let items = this.state.items.map((el) => {
+    //         if(item.id == el.id ) {
+    //             return Object.assign({}, el, {quantity: el.quantity-n});
+    //         } else return el;
+    //     });    
+    //     this.setState({items: items.filter((item) => (item.quantity > 0))});
+    // }
 
-    addItem(item, n) {
-        let found = false;
-        let items = this.state.items.map((el) => {
-            if(item.id == el.id) {
-              found = true;  
-              return Object.assign({}, el, {quantity: el.quantity+n});
-            } else return el;
-        });
-        if(!found) items[items.length] = Object.assign({}, item, {quantity: n});    
-        this.setState({items: items});
-    } 
+    // addItem(item, n) {
+    //     let found = false;
+    //     let items = this.state.items.map((el) => {
+    //         if(item.id == el.id) {
+    //           found = true;  
+    //           return Object.assign({}, el, {quantity: el.quantity+n});
+    //         } else return el;
+    //     });
+    //     if(!found) items[items.length] = Object.assign({}, item, {quantity: n});    
+    //     this.setState({items: items});
+    // } 
 
     toggle(e) {
         if(!this.state.isOpen && this.state.items.length == 0) { 
@@ -67,7 +67,6 @@ class Basket extends React.Component {
                 </Portal>             
                 }
                 {isOpen && items.length == 0 && <Redirect to={root()}/>}
-                <Catalog/>
             </Fragment>
         );
     }
