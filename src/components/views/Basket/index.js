@@ -52,29 +52,23 @@ class Basket extends React.Component {
     render() {
         const {left, top, isOpen, items} = this.state;
         return (
-            <AppContext.Provider value = {
-                {
-                    addItem: (item, n) => this.addItem(item, n)
+            <Fragment>
+                {!isOpen && 
+                <Button onClick={(e) => this.toggle(e)} >
+                    {isOpen ? 'Закрыть' : `Кол-во покупок = ${this.itemsQuantity()}`}
+                </Button>
                 }
-            }> 
-                <Fragment>
-                    {!isOpen && 
-                    <Button onClick={(e) => this.toggle(e)} >
-                        {isOpen ? 'Закрыть' : `Кол-во покупок = ${this.itemsQuantity()}`}
-                    </Button>
-                    }
-                    { isOpen && items.length != 0 &&
-                    <Portal style={{left: left, top: top}}
-                                        onClose={(e) => this.toggle(e)}>
-                        <ProductsTable items={items} 
-                                       delItem={(item, n) => this.delItem(item, n)}/>
-                        <Button onClick={(e) => this.toggle(e)}>Закрыть</Button>
-                    </Portal>             
-                    }
-                    {isOpen && items.length == 0 && <Redirect to={root()}/>}
-                    <Catalog/>
-                </Fragment>
-            </AppContext.Provider> 
+                { isOpen && items.length != 0 &&
+                <Portal style={{left: left, top: top}}
+                                    onClose={(e) => this.toggle(e)}>
+                    <ProductsTable items={items} 
+                                    delItem={(item, n) => this.delItem(item, n)}/>
+                    <Button onClick={(e) => this.toggle(e)}>Закрыть</Button>
+                </Portal>             
+                }
+                {isOpen && items.length == 0 && <Redirect to={root()}/>}
+                <Catalog/>
+            </Fragment>
         );
     }
 };

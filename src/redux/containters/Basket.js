@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
-import {fetchProducts} from '../actions/products';
-import Basket from '/src/components/views/Basket';
+import {addItem} from '../actions/basket';
+import AddToBasket from '/src/components/views/Catalog/AddToBasket';
 
 
 const stateToProps = (state)  => (
@@ -11,8 +11,8 @@ const stateToProps = (state)  => (
 
 const actionToProps = (dispatch) => (
     {
-        // fetchItems: () => dispatch(fetchProducts())
+        addItem: () => dispatch(addItem())
     }    
 );
 
-export default connect(stateToProps, actionToProps)(Basket);
+export default connect(stateToProps, actionToProps)(AddToBasket);

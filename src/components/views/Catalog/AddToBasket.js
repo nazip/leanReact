@@ -18,20 +18,17 @@ class AddToBasket extends React.Component {
   }
 
   render() {
-      return (
-        <AppContext.Consumer>
-        { (value) => 
-        <Fragment>
-          <form onSubmit={(e) => this.handleSubmit(e,value.addItem)}>
-            <label>
-                Кол-во: 
-                <input type="number" value={this.state.amount} 
-                       onChange={(e) => this.handleChange(e)} />
-            </label>
-            <input type="submit" value="Купить" />
-          </form> 
-        </Fragment>}  
-        </AppContext.Consumer>
+    return (
+      <Fragment>
+        <form onSubmit={(e) => this.handleSubmit(e,this.props.addItem)}>
+          <label>
+              Кол-во: 
+              <input type="number" value={this.state.amount} 
+                      onChange={(e) => this.handleChange(e)} />
+          </label>
+          <input type="submit" value="Купить" />
+        </form> 
+      </Fragment>  
     );
   }
 };
