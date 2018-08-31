@@ -1,6 +1,4 @@
 import React, {Fragment} from 'react';
-import AppContext from '/src/context';
-import Catalog from '/src/components/views/Catalog';
 import Portal from '/src/components/shared/Portal';
 import { Button } from 'reactstrap';
 import ProductsTable from '/src/components/shared/ProductsTable';
@@ -15,26 +13,10 @@ class Basket extends React.Component {
         this.itemsQuantity = this.itemsQuantity.bind(this);
     }
 
-    // delItem(item, n) {
-    //     let items = this.state.items.map((el) => {
-    //         if(item.id == el.id ) {
-    //             return Object.assign({}, el, {quantity: el.quantity-n});
-    //         } else return el;
-    //     });    
-    //     this.setState({items: items.filter((item) => (item.quantity > 0))});
-    // }
-
-    // addItem(item, n) {
-    //     let found = false;
-    //     let items = this.state.items.map((el) => {
-    //         if(item.id == el.id) {
-    //           found = true;  
-    //           return Object.assign({}, el, {quantity: el.quantity+n});
-    //         } else return el;
-    //     });
-    //     if(!found) items[items.length] = Object.assign({}, item, {quantity: n});    
-    //     this.setState({items: items});
-    // } 
+    componentDidUpdate() {
+        (this.props.items != this.state.items) &&                  
+        this.setState({items: this.props.items});
+    }    
 
     toggle(e) {
         if(!this.state.isOpen && this.state.items.length == 0) { 
@@ -62,7 +44,7 @@ class Basket extends React.Component {
                 <Portal style={{left: left, top: top}}
                                     onClose={(e) => this.toggle(e)}>
                     <ProductsTable items={items} 
-                                    delItem={(item, n) => this.delItem(item, n)}/>
+                                    delItem={(item, n) => this.props.delItem(item, n)}/>
                     <Button onClick={(e) => this.toggle(e)}>Закрыть</Button>
                 </Portal>             
                 }

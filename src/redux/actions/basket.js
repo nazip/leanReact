@@ -43,21 +43,20 @@ const successDel = (items) => {
 
 export const  addItem = (item, n) =>  {
     return (dispatch) => {
-        console.log('action!!!!!!!');
-        // dispatch(requstAdd());
-        // try {
-        //     let found = false;
-        //     let items = store.getState().basket.items.map((el) => {
-        //         if(item.id == el.id) {
-        //         found = true;  
-        //         return Object.assign({}, el, {quantity: el.quantity+n});
-        //         } else return el;
-        //     });
-        //     if(!found) items[items.length] = Object.assign({}, item, {quantity: n}); 
-        //     dispatch(successAdd(items));
-        // } catch (e) {
-        //     dispatch(errorAdd('error'));  
-        // }    
+        dispatch(requstAdd());
+        try {
+            let found = false;
+            let items = store.getState().basket.items.map((el) => {
+                if(item.id == el.id) {
+                found = true;  
+                return Object.assign({}, el, {quantity: el.quantity+n});
+                } else return el;
+            });
+            if(!found) items[items.length] = Object.assign({}, item, {quantity: n}); 
+            dispatch(successAdd(items));
+        } catch (e) { 
+            dispatch(errorAdd(e.message));  
+        }    
     }
 } 
 
@@ -72,7 +71,7 @@ export const  delItem = (item, n) =>  {
             });    
             dispatch(successDel(items.filter((item) => (item.quantity > 0))));
         } catch (e) {
-            dispatch(errorAdd('error'));  
+            dispatch(errorAdd(e.message));  
         }
     }
 } 

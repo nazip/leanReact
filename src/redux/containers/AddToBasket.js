@@ -8,4 +8,4 @@ const actionToProps = (dispatch) => (
     }    
 );
 
-export default connect(actionToProps)(AddToBasket);
+export default connect(null, actionToProps)(AddToBasket);

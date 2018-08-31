@@ -18,22 +18,6 @@ class Catalog extends React.Component {
     componentDidMount() {
         this.props.fetchItems();
     }
-    
-    delItem(item, n) {
-        this.setState({items:  this.state.items.map((el) => {
-            if(el.quantity >= n && item.id == el.id) {
-              return Object.assign({}, el, {quantity: el.quantity-n});
-            } else return el;
-        })});    
-    }
-
-    addItem(item, n) {
-        this.setState({items:  this.state.items.map((el) => {
-            if(el.basket >= n  && item.id == el.id) {
-              return Object.assign({}, el, {quantity: el.quantity+n});
-            } else return el;
-        })});    
-    } 
 
     render() {
         const {items, apiError}  = this.state;

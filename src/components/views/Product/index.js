@@ -1,8 +1,6 @@
 import React from 'react';
 import { Image } from '/src/elements';
-import request from 'superagent';
 import Spinner from '/src/components/shared/Spinner';
-import host from '/src/constants/Host';
 import Carusel from '/src/components/views/Carusel';
 
 class Product extends React.Component {
@@ -12,15 +10,12 @@ class Product extends React.Component {
     }
 
     componentDidMount() {
-        request
-        .get(`${host}/product/${this.props.id}`)
-        .timeout({
-            response: 5000,  
-            deadline: 60000, 
-        })
-        .end((err, res) => {
-        this.setState({item: res.body});
-        });
+        this.props.fetchItem(this.props.id);
+    }
+
+    componentDidUpdate() {
+        (this.props.item != this.state.item) &&                  
+            this.setState({item: this.props.item});
     }
 
     render() {
