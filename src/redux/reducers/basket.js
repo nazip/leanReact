@@ -9,11 +9,11 @@ export default (state = initalState, action) => {
             return Object.assign({}, state, {items: action.items});
         case type.ADD_TO_BASKET_ERROR:
             return Object.assign({}, state, {error: action.error});
-        case type.REM_FROM_BASKET_REQUEST:
+        case type.REMOVE_FROM_BASKET_REQUEST:
             return state;  
-        case type.REM_FROM_BASKET_SUCCESS:
+        case type.REMOVE_FROM_BASKET_SUCCESS:
             return Object.assign({}, state, {items: action.items});  
-        case type.REM_FROM_BASKET_ERROR:
+        case type.REMOVE_FROM_BASKET_ERROR:
             return Object.assign({}, state, {error: action.error});
         default: return state;
     }

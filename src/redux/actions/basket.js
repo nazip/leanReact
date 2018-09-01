@@ -1,7 +1,7 @@
 import * as types from '../const/actionTypes/basket';
 import store from '../store';
 
-const requstAdd = () => {
+const requestAdd = () => {
     return {
         type: types.ADD_TO_BASKET_REQUEST
     }
@@ -21,29 +21,29 @@ const successAdd = (items) => {
     }
 }
 
-const requstDel = () => {
+const requestDelete = () => {
     return {
-        type: types.REM_FROM_BASKET_REQUEST
+        type: types.DELETE_FROM_BASKET_REQUEST
     }
 }
 
-const errorDel = (error) => {
+const errorDelete = (error) => {
     return {
-        type: types.REM_FROM_BASKET_ERROR,
+        type: types.DELETE_FROM_BASKET_ERROR,
         error
     }
 }
 
-const successDel = (items) => {
+const successDelete = (items) => {
     return {
-        type: types.REM_FROM_BASKET_SUCCESS,
+        type: types.DELETE_FROM_BASKET_SUCCESS,
         items
     }
 }
 
 export const  addItem = (item, n) =>  {
     return (dispatch) => {
-        dispatch(requstAdd());
+        dispatch(requestAdd());
         try {
             let found = false;
             let items = store.getState().basket.items.map((el) => {
@@ -62,16 +62,16 @@ export const  addItem = (item, n) =>  {
 
 export const  delItem = (item, n) =>  {
     return (dispatch) => {
-        dispatch(requstDel());
+        dispatch(requestDelete());
         try {
             let items = store.getState().basket.items.map((el) => {
                 if(item.id == el.id ) {
                     return Object.assign({}, el, {quantity: el.quantity-n});
                 } else return el;
             });    
-            dispatch(successDel(items.filter((item) => (item.quantity > 0))));
+            dispatch(successDelete(items.filter((item) => (item.quantity > 0))));
         } catch (e) {
-            dispatch(errorAdd(e.message));  
+            dispatch(errorDelete(e.message));  
         }
     }
 } 
