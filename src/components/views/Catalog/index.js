@@ -13,6 +13,8 @@ class Catalog extends React.Component {
     componentDidUpdate() {
         (this.props.items != this.state.items) &&                  
             this.setState({items: this.props.items});
+        (this.props.apiError != this.state.apiError) &&
+            this.setState({apiError: true});
     }
 
     componentDidMount() {

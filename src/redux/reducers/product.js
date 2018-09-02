@@ -6,7 +6,9 @@ export default (state = initalState, action) => {
         case type.FETCH_PRODUCT_REQUEST:
             return state;
         case type.FETCH_PRODUCT_SUCCESS:
-            return Object.assign({}, state, {item: action.item});
+            return Object.assign({}, state, {item: action.response, error: undefined});
+        case type.FETCH_PRODUCT_FAILURE:
+            return Object.assign({}, state, {item: null, error: action.error});
         default: 
             return state;
     }

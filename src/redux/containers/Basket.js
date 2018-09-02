@@ -11,8 +11,8 @@ const stateToProps = (state)  => (
 
 const actionToProps = (dispatch) => (
     {
-        addItem: (item,n) => dispatch(addItem(item,n)),
-        delItem: (item,n) => dispatch(delItem(item,n))
+        addItem: (item,n) => addItem(dispatch,item,n),
+        delItem: (item,n) => delItem(dispatch,item,n)
     }    
 );
 

@@ -1,46 +1,18 @@
 import * as types from '../const/actionTypes/product';
-import request from 'superagent';
-import host from '/src/constants/Host';
+import {API_CALL} from '../const/APIcall';
 
-const requstProduct = () => {
-    return {
-        type: types.FETCH_PRODUCT_REQUEST
+export default (id) => {
+  return {
+    [API_CALL]: {
+      endpoint: `/product/${id}`,
+      method: 'GET',
+      query: {},
+      types: [
+        types.FETCH_PRODUCT_REQUEST,
+        types.FETCH_PRODUCT_SUCCESS,
+        types.FETCH_PRODUCT_FAILURE
+      ]
     }
-}
-
-const errorProduct = (error) => {
-    return {
-        type: types.FETCH_PRODUCT_FAILURE,
-        error
-    }
-}
-
-const successProduct = (item) => {
-    return {
-        type: types.FETCH_PRODUCT_SUCCESS,
-        item
-    }
-}
-
-export const fetchProduct = (id) => {
-    return (dispatch) => {
-        dispatch(requstProduct());
-        return request
-        .get(`${host}/product/${id}`)
-        .timeout({
-            response: 5000,  
-            deadline: 60000, 
-        })
-        .then(
-            (res) => dispatch(successProduct(res.body)),
-            (err) => {
-                if(err.timeout) {
-                    dispatch(errorProduct('timeout'))
-                } else {     
-                    dispatch(errorProduct(err.message))
-                }
-            }
-        );
-    } 
+  };
 }
 

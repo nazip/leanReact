@@ -41,37 +41,33 @@ const successDelete = (items) => {
     }
 }
 
-export const  addItem = (item, n) =>  {
-    return (dispatch) => {
-        dispatch(requestAdd());
-        try {
-            let found = false;
-            let items = store.getState().basket.items.map((el) => {
-                if(item.id == el.id) {
-                found = true;  
-                return Object.assign({}, el, {quantity: el.quantity+n});
-                } else return el;
-            });
-            if(!found) items[items.length] = Object.assign({}, item, {quantity: n}); 
-            dispatch(successAdd(items));
-        } catch (e) { 
-            dispatch(errorAdd(e.message));  
-        }    
-    }
+export const  addItem = (dispatch, item, n) =>  {
+    dispatch(requestAdd());
+    try {
+        let found = false;
+        let items = store.getState().basket.items.map((el) => {
+            if(item.id == el.id) {
+            found = true;  
+            return Object.assign({}, el, {quantity: el.quantity+n});
+            } else return el;
+        });
+        if(!found) items[items.length] = Object.assign({}, item, {quantity: n}); 
+        dispatch(successAdd(items));
+    } catch (e) { 
+        dispatch(errorAdd(e.message));  
+    }    
 } 
 
-export const  delItem = (item, n) =>  {
-    return (dispatch) => {
-        dispatch(requestDelete());
-        try {
-            let items = store.getState().basket.items.map((el) => {
-                if(item.id == el.id ) {
-                    return Object.assign({}, el, {quantity: el.quantity-n});
-                } else return el;
-            });    
-            dispatch(successDelete(items.filter((item) => (item.quantity > 0))));
-        } catch (e) {
-            dispatch(errorDelete(e.message));  
-        }
+export const  delItem = (dispatch, item, n) =>  {
+    dispatch(requestDelete());
+    try {
+        let items = store.getState().basket.items.map((el) => {
+            if(item.id == el.id ) {
+                return Object.assign({}, el, {quantity: el.quantity-n});
+            } else return el;
+        });    
+        dispatch(successDelete(items.filter((item) => (item.quantity > 0))));
+    } catch (e) {
+        dispatch(errorDelete(e.message));  
     }
 } 
