@@ -1,5 +1,6 @@
 import * as types from '../const/actionTypes/basket';
 import store from '../store';
+import {LOCAL_STORAGE_SAVE, LOCAL_STORAGE_KEY} from '../const/LocalStorage';
 
 const requestAdd = () => {
     return {
@@ -41,22 +42,44 @@ const successDelete = (items) => {
     }
 }
 
+// export const  addItem = (dispatch, item, n) =>  {
+//     dispatch(requestAdd());
+//     try {
+//         let found = false;
+//         let items = store.getState().basket.items.map((el) => {
+//             if(item.id == el.id) {
+//             found = true;  
+//             return Object.assign({}, el, {quantity: el.quantity+n});
+//             } else return el;
+//         });
+//         if(!found) items[items.length] = Object.assign({}, item, {quantity: n}); 
+//         dispatch(successAdd(items));
+//     } catch (e) { 
+//         dispatch(errorAdd(e.message));  
+//     }    
+// } 
+
 export const  addItem = (dispatch, item, n) =>  {
-    dispatch(requestAdd());
-    try {
-        let found = false;
-        let items = store.getState().basket.items.map((el) => {
-            if(item.id == el.id) {
-            found = true;  
-            return Object.assign({}, el, {quantity: el.quantity+n});
-            } else return el;
-        });
-        if(!found) items[items.length] = Object.assign({}, item, {quantity: n}); 
-        dispatch(successAdd(items));
-    } catch (e) { 
-        dispatch(errorAdd(e.message));  
-    }    
+    let found = false;
+    let items = store.getState().basket.items.map((el) => {
+        if(item.id == el.id) {
+        found = true;  
+        return Object.assign({}, el, {quantity: el.quantity+n});
+        } else return el;
+    });
+    if(!found) items[items.length] = Object.assign({}, item, {quantity: n}); 
+    return {
+        [LOCAL_STORAGE_SAVE]: {
+           [LOCAL_STORAGE_KEY]: items,
+           types: [
+            types.ADD_TO_BASKET_REQUEST,
+            types.ADD_TO_BASKET_SUCCESS,
+            types.ADD_TO_BASKET_ERROR
+          ] 
+        }
+    };
 } 
+
 
 export const  delItem = (dispatch, item, n) =>  {
     dispatch(requestDelete());
