@@ -1,65 +1,8 @@
 import * as types from '../const/actionTypes/basket';
 import store from '../store';
-import {LOCAL_STORAGE_SAVE, LOCAL_STORAGE_KEY} from '../const/LocalStorage';
+import {LOCAL_STORAGE_SAVE, LOCAL_STORAGE_DATA_KEY, LOCAL_STORAGE_READ} from '../const/LocalStorage';
 
-const requestAdd = () => {
-    return {
-        type: types.ADD_TO_BASKET_REQUEST
-    }
-}
-
-const errorAdd = (error) => {
-    return {
-        type: types.ADD_TO_BASKET_ERROR,
-        error
-    }
-}
-
-const successAdd = (items) => {
-    return {
-        type: types.ADD_TO_BASKET_SUCCESS,
-        items
-    }
-}
-
-const requestDelete = () => {
-    return {
-        type: types.DELETE_FROM_BASKET_REQUEST
-    }
-}
-
-const errorDelete = (error) => {
-    return {
-        type: types.DELETE_FROM_BASKET_ERROR,
-        error
-    }
-}
-
-const successDelete = (items) => {
-    return {
-        type: types.DELETE_FROM_BASKET_SUCCESS,
-        items
-    }
-}
-
-// export const  addItem = (dispatch, item, n) =>  {
-//     dispatch(requestAdd());
-//     try {
-//         let found = false;
-//         let items = store.getState().basket.items.map((el) => {
-//             if(item.id == el.id) {
-//             found = true;  
-//             return Object.assign({}, el, {quantity: el.quantity+n});
-//             } else return el;
-//         });
-//         if(!found) items[items.length] = Object.assign({}, item, {quantity: n}); 
-//         dispatch(successAdd(items));
-//     } catch (e) { 
-//         dispatch(errorAdd(e.message));  
-//     }    
-// } 
-
-export const  addItem = (dispatch, item, n) =>  {
+export const  addItem = (item, n) =>  {
     let found = false;
     let items = store.getState().basket.items.map((el) => {
         if(item.id == el.id) {
@@ -70,7 +13,7 @@ export const  addItem = (dispatch, item, n) =>  {
     if(!found) items[items.length] = Object.assign({}, item, {quantity: n}); 
     return {
         [LOCAL_STORAGE_SAVE]: {
-           [LOCAL_STORAGE_KEY]: items,
+           [LOCAL_STORAGE_DATA_KEY]: items,
            types: [
             types.ADD_TO_BASKET_REQUEST,
             types.ADD_TO_BASKET_SUCCESS,
@@ -80,17 +23,33 @@ export const  addItem = (dispatch, item, n) =>  {
     };
 } 
 
-
-export const  delItem = (dispatch, item, n) =>  {
-    dispatch(requestDelete());
-    try {
-        let items = store.getState().basket.items.map((el) => {
-            if(item.id == el.id ) {
-                return Object.assign({}, el, {quantity: el.quantity-n});
-            } else return el;
-        });    
-        dispatch(successDelete(items.filter((item) => (item.quantity > 0))));
-    } catch (e) {
-        dispatch(errorDelete(e.message));  
-    }
+export const  delItem = (item, n) =>  {
+    let items = store.getState().basket.items.map((el) => {
+        if(item.id == el.id ) {
+            return Object.assign({}, el, {quantity: el.quantity-n});
+        } else return el;
+    });    
+    return {
+        [LOCAL_STORAGE_SAVE]: {
+            [LOCAL_STORAGE_DATA_KEY]: items,
+            types: [
+            types.DELETE_FROM_BASKET_REQUEST,
+            types.DELETE_FROM_BASKET_SUCCESS,
+            types.DELETE_FROM_BASKET_ERROR
+            ] 
+        }
+    };
 } 
+
+export const  fillBasket = () =>  {
+    return {
+        [LOCAL_STORAGE_READ]: {
+            types: [
+            types.ADD_TO_BASKET_REQUEST,
+            types.ADD_TO_BASKET_SUCCESS,
+            types.ADD_TO_BASKET_ERROR
+            ] 
+        }
+    };
+} 
+

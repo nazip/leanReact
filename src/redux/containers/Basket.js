@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {addItem, delItem} from '../actions/basket';
+import {addItem, delItem, fillBasket} from '../actions/basket';
 import Basket from '/src/components/views/Basket';
 
 
@@ -11,8 +11,9 @@ const stateToProps = (state)  => (
 
 const actionToProps = (dispatch) => (
     {
-        addItem: (item,n) => addItem(dispatch,item,n),
-        delItem: (item,n) => delItem(dispatch,item,n)
+        addItem: (item,n) => dispatch(addItem(item,n)),
+        delItem: (item,n) => dispatch(delItem(item,n)),
+        fillBasket: () => dispatch(fillBasket()),
     }    
 );
 

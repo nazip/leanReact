@@ -1,3 +1,3 @@
 export const LOCAL_STORAGE_READ = 'BASKET_READ';
 export const LOCAL_STORAGE_SAVE = 'BASKET_SAVE';
-export const LOCAL_STORAGE_KEY =  'BASKET';
+export const LOCAL_STORAGE_DATA_KEY =  'BASKET';

@@ -4,7 +4,7 @@ import AddToBasket from '/src/components/views/Catalog/AddToBasket';
 
 const actionToProps = (dispatch) => (
     {
-        addItem: (item, n) => addItem(dispatch, item, n)
+        addItem: (item, n) => dispatch(addItem(item, n))
     }    
 );
 

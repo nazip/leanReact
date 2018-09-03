@@ -13,6 +13,9 @@ class Basket extends React.Component {
         this.itemsQuantity = this.itemsQuantity.bind(this);
     }
 
+    componentDidMount() {
+        this.props.fillBasket();
+    }
     componentDidUpdate() {
         (this.props.items != this.state.items) &&                  
         this.setState({items: this.props.items});
