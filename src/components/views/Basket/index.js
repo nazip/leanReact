@@ -14,7 +14,7 @@ class Basket extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fillBasket();
+        this.props.readItems();
     }
     componentDidUpdate() {
         (this.props.items != this.state.items) &&                  

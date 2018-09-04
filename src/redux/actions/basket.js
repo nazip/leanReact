@@ -41,7 +41,7 @@ export const  delItem = (item, n) =>  {
     };
 } 
 
-export const  fillBasket = () =>  {
+export const  readItems = () =>  {
     return {
         [LOCAL_STORAGE_READ]: {
             types: [

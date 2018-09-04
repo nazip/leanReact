@@ -21,9 +21,9 @@ class AddToBasket extends React.Component {
     return (
       <Fragment>
         <form onSubmit={(e) => this.handleSubmit(e)}>
-          <label>
+          <label for="quantity">
               Кол-во: 
-              <input type="number" value={this.state.amount} 
+              <input className="no-spin" name="quantity" type="number" value={this.state.amount} 
                       onChange={(e) => this.handleChange(e)} />
           </label>
           <input type="submit" value="Купить" />
