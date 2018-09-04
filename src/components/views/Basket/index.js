@@ -1,10 +1,10 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 import Portal from '/src/components/shared/Portal';
-import { Button } from 'reactstrap';
+import Button from '/src/elements/Button';
 import ProductsTable from '/src/components/shared/ProductsTable';
-import {Redirect} from 'react-router';
+import { Redirect } from 'react-router';
 import history from '/src/history';
-import {root} from '/src/helpers/routes';
+import { root } from '/src/helpers/routes';
 
 class Basket extends React.Component {
     constructor(props) {
@@ -14,7 +14,7 @@ class Basket extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fillBasket();
+        this.props.readItems();
     }
     componentDidUpdate() {
         (this.props.items != this.state.items) &&                  
@@ -39,7 +39,7 @@ class Basket extends React.Component {
         return (
             <Fragment>
                 {!isOpen && 
-                <Button onClick={(e) => this.toggle(e)} >
+                <Button onClick={(e) => this.toggle(e)}>
                     {isOpen ? 'Закрыть' : `Кол-во покупок = ${this.itemsQuantity()}`}
                 </Button>
                 }
