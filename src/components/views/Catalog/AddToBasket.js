@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import Button from '/src/elements/Button';
 
 class AddToBasket extends React.Component {
   constructor(props) {
@@ -21,12 +22,16 @@ class AddToBasket extends React.Component {
     return (
       <Fragment>
         <form onSubmit={(e) => this.handleSubmit(e)}>
+<<<<<<< HEAD
           <label for="quantity">
+=======
+          <label htmlFor="quantity">
+>>>>>>> 147c2ed545e1d4610ecbfb9007bf7971fd5267a1
               Кол-во: 
               <input className="no-spin" name="quantity" type="number" value={this.state.amount} 
                       onChange={(e) => this.handleChange(e)} />
           </label>
-          <input type="submit" value="Купить" />
+          <Button type='submit'>Купить</Button>
         </form> 
       </Fragment>  
     );
