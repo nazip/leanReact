@@ -1,14 +1,15 @@
 import React from 'react';
-import classNames from 'classnames';
+import Alert from '/src/elements';
 
 export default  ({ input, label, type,
                    meta: { touched, error, warning }}) =>
-(
-  <div className={classNames('ui field', {error})}>
+{
+  return (
+  <div>
     <label>{label}</label>
-    <input className="ui input" {...input} type={type}/>
-    {touched && (error && (<div className="ui red label">{error}</div>)
-    || (warning && (<div className="ui yellow label">{warning}</div>))
+    <input {...input} type={type}/>
+    {touched && (error && (<Alert color="danger">{error}</Alert>)
+    || (warning && (<Alert color="warning">{warning}</Alert>))
     )}
-  </div>
-); 
+  </div>);
+}; 

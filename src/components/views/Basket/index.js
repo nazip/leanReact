@@ -47,7 +47,7 @@ class Basket extends React.Component {
                 <Portal style={{left: left, top: top}}
                                     onClose={(e) => this.toggle(e)}>
                     <ProductsTable items={items} 
-                                    delItem={(item, n) => this.props.delItem(item, n)}/>
+                                   delItem={(item, n) => this.props.delItem(item, n)}/>
                     <Button onClick={(e) => this.toggle(e)}>Закрыть</Button>
                 </Portal>             
                 }

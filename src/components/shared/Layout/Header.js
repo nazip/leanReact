@@ -5,7 +5,7 @@ import {
   Nav,
   NavItem, NavLink } from 'reactstrap';
 // import NavLink  from './helpers/NavLink';  
-import {catalog, about, root} from '/src/helpers/routes';
+import {catalog, about, root, order} from '/src/helpers/routes';
 
 export default class Header extends React.Component {
   render() {
@@ -19,6 +19,9 @@ export default class Header extends React.Component {
               </NavItem>
               <NavItem>
                 <NavLink href={catalog()}>Продукты</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href={order()}>Оформить заказ</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href={about()}>О компании</NavLink>

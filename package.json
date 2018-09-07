@@ -21,10 +21,6 @@
     "reactstrap": "^6.4.0",
     "redux": "^4.0.0",
     "redux-form": "^7.4.2",
-<<<<<<< HEAD
-    "redux-thunk": "^2.3.0",
-=======
->>>>>>> 147c2ed545e1d4610ecbfb9007bf7971fd5267a1
     "superagent": "^3.8.3"
   },
   "devDependencies": {
