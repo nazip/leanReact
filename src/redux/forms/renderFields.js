@@ -1,5 +1,5 @@
 import React from 'react';
-import Alert from '/src/elements';
+import { Alert } from '/src/elements';
 
 export default  ({ input, label, type,
                    meta: { touched, error, warning }}) =>
@@ -8,8 +8,8 @@ export default  ({ input, label, type,
   <div>
     <label>{label}</label>
     <input {...input} type={type}/>
-    {touched && (error && (<Alert color="danger">{error}</Alert>)
-    || (warning && (<Alert color="warning">{warning}</Alert>))
+    {touched && (error && (<Alert color='danger'>{error}</Alert>)
+    || (warning && (<Alert color='warning'>{warning}</Alert>))
     )}
   </div>);
 }; 

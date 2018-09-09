@@ -1,38 +1,42 @@
 import { reduxForm } from 'redux-form';
 import OrderForm from '../forms/OrderForm';
-import { connect } from 'react-redux';
-import { EEXIST } from 'constants';
+import order from '../actions/order';
 
 const validate = (values) => {
+    console.log('vvv=', values);
     const errors = {};
-    console.log('values=', values);
     if (!values.userName) {
-        errors.userName = 'Required'
+        errors.userName = 'Required';
     }
     if (!values.userPhone) {
-        errors.userPhone = 'Required'
+        errors.userPhone = 'Required';
     }
     if (!values.userAddress) {
-        errors.userAddress = 'Required'
+        errors.userAddress = 'Required';
     }
     if (!values.userEmail) {
-        errors.userEmail = 'Required'
+        errors.userEmail = 'Required';
     }
-    return errors
+
+    return errors;
 };
 
-const actionToProps = (dispatch) => (
-    {
-        onSubmit  
-    }
-)
+const warn = (values) => {
+   const warnings = {};
+   if (values.userName && values.userName.length < 3) {
+        warnings.userName = 'user length must be > 3';
+   }
+   return warnings;
+};
 
-const onSubmit = (e) => {
-    console.log('onsubmit', JSON.stringify(this.state.form.OrderForm.values));
-    e.preventDefault();
-}
+const onSubmit = (values, dispatch) => (
+    dispatch(order(values))
+); 
 
-export default  connect(null, actionToProps)(reduxForm({
+export default reduxForm({
     form: 'OrderForm',
-    validate
-})(OrderForm));
+    onSubmit,
+    validate,
+    warn
+})  
+(OrderForm);
