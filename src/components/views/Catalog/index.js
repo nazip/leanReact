@@ -3,6 +3,9 @@ import Product from './Product';
 import Spinner from '/src/components/shared/Spinner';
 import NetworkError from '/src/components/shared/NetworkError';
 import Basket from '/src/redux/containers/Basket';
+import { Alert } from '/src/elements';
+import history from '/src/history';
+
 
 class Catalog extends React.Component {
     constructor(props) {
@@ -30,6 +33,9 @@ class Catalog extends React.Component {
         } else {
             return (
             <Fragment>
+                {history.location.state && 
+                    <Alert color='info'>{history.location.state.message}</Alert>
+                } 
                 <Basket/>  
                 {items.map( (item) => <Product key={item.id} item={item}/>)}  
             </Fragment>      

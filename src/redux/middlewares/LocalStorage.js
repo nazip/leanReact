@@ -4,7 +4,9 @@ import { LOCAL_STORAGE_READ,
        }  from '../const/LocalStorage';
 
 const saveToLocalStorage = (key, state) => {
-  try {
+  try 
+    {
+      localStorage.clear();
       const serialState = JSON.stringify(state);
       localStorage.setItem(key, serialState);
       return true;
@@ -16,7 +18,7 @@ const saveToLocalStorage = (key, state) => {
 const readFromLocalStorage = (key) => {
   try {
     const serialState = localStorage.getItem(key);
-    return serialState ? JSON.parse(serialState) : [];
+    return JSON.parse(serialState);
   } catch(e) {
     return [];
   }  
