@@ -1,17 +1,18 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
   mode: 'development',  
 
   entry: {
-    app:  './index.js'
+    bundle:  './index.js'
   },
  
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'public/assets'),
     publicPath: '/assets/'
   },
  
@@ -27,12 +28,12 @@ module.exports = {
 
   devtool: 'inline-source-map',
 
-  plugins: [
-    new CleanWebpackPlugin(['dist']),
-    new HtmlWebpackPlugin({
-      title: 'Development'
-    })
-  ],
+//   plugins: [
+//     new CleanWebpackPlugin(['dist']),
+//     new HtmlWebpackPlugin({
+//       title: 'Development'
+//     })
+//   ],
 
   module: {
     rules: [
@@ -54,5 +55,9 @@ module.exports = {
             ]
         }              
     ]
-  }
+  },
+
+  plugins: [
+    new ManifestPlugin()
+  ]
 };
