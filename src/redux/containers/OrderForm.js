@@ -2,7 +2,7 @@ import { reduxForm } from 'redux-form';
 import OrderForm from '../forms/OrderForm';
 import order from '../actions/order';
 import { deleteAllItems } from '../actions/basket'; 
-import history from '/src/history';
+import history from '~/src/history';
 
 const validate = (values) => {
     const errors = {};

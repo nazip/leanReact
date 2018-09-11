@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
-import Portal from '/src/components/shared/Portal';
-import Button from '/src/elements/Button';
-import ProductsTable from '/src/components/shared/ProductsTable';
+import Portal from '~/src/components/shared/Portal';
+import Button from '~/src/elements/Button';
+import ProductsTable from '~/src/components/shared/ProductsTable';
 import { Redirect } from 'react-router';
-import history from '/src/history';
-import { root } from '/src/helpers/routes';
+import history from '~/src/history';
+import { root } from '~/src/helpers/routes';
 
 class Basket extends React.Component {
     constructor(props) {

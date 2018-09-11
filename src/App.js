@@ -3,7 +3,7 @@ import {Router, Switch} from 'react-router-dom';
 import history from './history';
 import routes from './routes';
 import RoutesWithSubRoutes from './routes/RoutesWithSubRoutes';
-import Layout from '/src/components/shared/Layout';
+import Layout from '~/src/components/shared/Layout';
 import './css/app.css';
 import {Provider} from 'react-redux';
 import store from './redux/store';

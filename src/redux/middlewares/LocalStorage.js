@@ -18,6 +18,7 @@ const saveToLocalStorage = (key, state) => {
 const readFromLocalStorage = (key) => {
   try {
     const serialState = localStorage.getItem(key);
+    if(serialState==null) return [];
     return JSON.parse(serialState);
   } catch(e) {
     return [];

@@ -1,6 +1,6 @@
 import request from 'superagent';
 import { stringify } from 'qs';
-import API_ROOT  from '/src/constants/Host';
+import API_ROOT  from '~/src/constants/Host';
 import {API_CALL}  from '../const/APIcall';
 
 function APICall({endpoint, method, query, payload}) {

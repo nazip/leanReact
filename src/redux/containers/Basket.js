@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {addItem, delItem, readItems} from '../actions/basket';
-import Basket from '/src/components/views/Basket';
+import Basket from '~/src/components/views/Basket';
 
 
 const stateToProps = (state)  => (

@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '/src/redux/containers/Header';
+import Header from '~/src/redux/containers/Header';
 import Footer from './Footer';
 import { Container, Row, Col } from 'reactstrap';
 
