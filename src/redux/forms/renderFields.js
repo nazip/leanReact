@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert } from '/src/elements';
+import { Alert } from '~/src/elements';
 
 export default  ({ input, label, type,
                    meta: { touched, error, warning }}) =>

@@ -1,6 +1,6 @@
 import React from 'react';
 import {about} from '../helpers/routes';
-import About from '/src/components/views/About';
+import About from '~/src/components/views/About';
 
 export default {
     path: about(),

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Image } from '/src/elements';
-import Spinner from '/src/components/shared/Spinner';
-import Carusel from '/src/components/views/Carusel';
+import { Image } from '~/src/elements';
+import Spinner from '~/src/components/shared/Spinner';
+import Carusel from '~/src/components/views/Carusel';
 
 class Product extends React.Component {
     constructor(props) {

@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
 import Product from './Product';
-import Spinner from '/src/components/shared/Spinner';
-import NetworkError from '/src/components/shared/NetworkError';
-import Basket from '/src/redux/containers/Basket';
-import { Alert } from '/src/elements';
-import history from '/src/history';
+import Spinner from '~/src/components/shared/Spinner';
+import NetworkError from '~/src/components/shared/NetworkError';
+import Basket from '~/src/redux/containers/Basket';
+import { Alert } from '~/src/elements';
+import history from '~/src/history';
 
 
 class Catalog extends React.Component {

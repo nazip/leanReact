@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import Header from '/src/components/shared/Layout/Header';
+import Header from '~/src/components/shared/Layout/Header';
 
 const stateToProps = (state) => (
     {

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Field } from 'redux-form';
-import Button from '/src/elements/Button';
+import Button from '~/src/elements/Button';
 import renderFields from './renderFields';
 import store from '../store';
-import { Alert } from '/src/elements';
+import { Alert } from '~/src/elements';
 import { phoneNormalize, nameNormalize } from './normalize';
 
 export default ({handleSubmit, pristine, submitting, reset}) => (

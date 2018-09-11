@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import Button from '/src/elements/Button';
+import Button from '~/src/elements/Button';
 
 class AddToBasket extends React.Component {
   constructor(props) {

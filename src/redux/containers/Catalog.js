@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import fetchProducts from '../actions/products';
-import Catalog from '/src/components/views/Catalog';
+import Catalog from '~/src/components/views/Catalog';
 
 
 const stateToProps = (state)  => (
