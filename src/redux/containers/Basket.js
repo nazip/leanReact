@@ -1,5 +1,6 @@
 import {connect} from 'react-redux';
-import {addItem, delItem, readItems} from '../actions/basket';
+import {addItem, delItem} from '../actions/basket';
+import {readItems} from '../actions/localStorage';
 import Basket from '~/src/components/views/Basket';
 
 

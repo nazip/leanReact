@@ -2,7 +2,7 @@ const path = require('path');
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   mode: 'development',  
@@ -24,7 +24,8 @@ module.exports = {
   },
 
   devServer: {
-    historyApiFallback: true  
+    historyApiFallback: true,
+    hot: true  
   },
 
   devtool: 'inline-source-map',
@@ -59,6 +60,7 @@ module.exports = {
   },
 
   plugins: [
-    new ManifestPlugin()
+    new ManifestPlugin(),
+    new webpack.HotModuleReplacementPlugin()
   ]
 };

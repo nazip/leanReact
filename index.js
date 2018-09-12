@@ -7,3 +7,16 @@ ReactDom.render(
     <App/>,
     document.getElementById("root")
 );
+
+if (module.hot) {
+    module.hot.accept('~/src/App', () => {
+      const NextApp = require('./src/App').default;
+      ReactDOM.render(
+        <AppContainer>
+          <NextApp/>
+        </AppContainer>,
+        rootEl
+      );
+    });
+}
+  
