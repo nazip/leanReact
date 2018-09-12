@@ -8,14 +8,16 @@ import './css/app.css';
 import {Provider} from 'react-redux';
 import store from './redux/store';
 
-export default () => (
-  <Provider store={store}>
+const App = () => (
+  <Provider store={store}> 
     <Router history={history}>
       <Layout>
         <Switch>
           {routes.map((route,i) => <RoutesWithSubRoutes key={i} {...route}/> )} 
         </Switch>
       </Layout>  
-    </Router>         
+    </Router>          
   </Provider>
-);
+);  
+
+export default App; 

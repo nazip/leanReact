@@ -1,12 +1,13 @@
 import * as type from '../const/actionTypes/basket';
-import Basket from '../containers/Basket';
+import { writeItems } from '~/src/redux/actions/localStorage';
+
 const initalState = {items: []};
 
-const delItem = (basketItems, item, n) =>  {
+const delItem = (basketItems, item, quantity) =>  {
     let items = basketItems.map((el) => {
         if(item.id == el.id ) {
-            if(el.quantity-n > 0) {
-                return Object.assign({}, el, {quantity: el.quantity-n});
+            if(el.quantity-quantity > 0) {
+                return Object.assign({}, el, {quantity: el.quantity-quantity});
             }    
         } else return el;
     });
@@ -14,16 +15,16 @@ const delItem = (basketItems, item, n) =>  {
     return items;
 }
 
-const addItem = (basketItems, item, n) => {
-    return [];
+const addItem = (basketItems, item, quantity) => {
     let found = false;
     let items = basketItems.map((el) => {
         if(item.id == el.id) {
         found = true;  
-        return Object.assign({}, el, {quantity: el.quantity+n});
+        return Object.assign({}, el, {quantity: el.quantity+quantity});
         } else return el;
     });
-    if(!found) items[items.length] = Object.assign({}, item, {quantity: n}); 
+    if(!found) 
+        items[items.length] = Object.assign({}, item, {quantity: quantity}); 
     return items;
 }
 
@@ -33,16 +34,14 @@ export default (state = initalState, action) => {
             return state;
         case type.ADD_TO_BASKET_SUCCESS:
             return Object.assign({}, state, 
-                {items: addItem(state.Basket,items, item, quantity)});
+                {items: addItem(state.items, action.item, action.quantity)});  
         case type.ADD_TO_BASKET_ERROR:
-            alert('reducer basket');
-            const {item, quantity} = action; 
             return Object.assign({}, state, {error: action.error});
         case type.DELETE_FROM_BASKET_REQUEST:
             return state;  
         case type.DELETE_FROM_BASKET_SUCCESS:
             return Object.assign({}, state, 
-                {items: delItem(state.Basket,items, item, quantity)});  
+                {items: delItem(state.items, action.item, action.quantity)});  
         case type.DELETE_FROM_BASKET_ERROR:
             return Object.assign({}, state, {error: action.error});
         default: return state; 

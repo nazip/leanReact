@@ -2,7 +2,7 @@ import { LOCAL_STORAGE_READ,
          LOCAL_STORAGE_WRITE,
          LOCAL_STORAGE
        }  from '../const/LocalStorage';
-import * as type from '../const/actionTypes/basket';       
+import * as type from '../const/actionTypes/localStorage';       
 
 const saveToLocalStorage = (key, items) => {
   try 
@@ -37,7 +37,9 @@ export default (store) => (next) => (action) => {
       saveToLocalStorage(LOCAL_STORAGE, items) 
     } else {
       console.log('read from local storage');
-      readFromLocalStorage(LOCAL_STORAGE) 
+      next({type: type.READ_FROM_LOCALSTORAGE, 
+        items: readFromLocalStorage(LOCAL_STORAGE)
+      });
     }
 };
   

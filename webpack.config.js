@@ -1,6 +1,6 @@
 const path = require('path');
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const webpack = require('webpack');
 
@@ -25,17 +25,11 @@ module.exports = {
 
   devServer: {
     historyApiFallback: true,
+    // contentBase: './public/assets',
     hot: true  
   },
 
   devtool: 'inline-source-map',
-
-//   plugins: [
-//     new CleanWebpackPlugin(['dist']),
-//     new HtmlWebpackPlugin({
-//       title: 'Development'
-//     })
-//   ],
 
   module: {
     rules: [
@@ -61,6 +55,10 @@ module.exports = {
 
   plugins: [
     new ManifestPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    // new CleanWebpackPlugin(['public/assets/']),
+    // new HtmlWebpackPlugin({
+    //    title: 'Development'
+    // })    
   ]
 };

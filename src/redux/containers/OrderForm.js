@@ -38,7 +38,7 @@ const warn = (values) => {
 const onSubmit = (values, dispatch) => {
     dispatch(order(JSON.stringify(values))).then(
         (response) => {
-            dispatch(deleteAllItems());
+            // dispatch(deleteAllItems());
             history.push('/products', {message: 'Order sended !!!'});
         }    
     );

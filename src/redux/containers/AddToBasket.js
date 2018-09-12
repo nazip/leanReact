@@ -1,5 +1,5 @@
-import {connect} from 'react-redux';
-import {addItem} from '../actions/basket';
+import { connect } from 'react-redux';
+import { addItem } from '../actions/basket';
 import AddToBasket from '~/src/components/views/Catalog/AddToBasket';
 
 const actionToProps = (dispatch) => (
