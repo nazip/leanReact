@@ -4,17 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-<<<<<<< HEAD
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack-cli",
-    "start": "webpack-dev-server --open",
-    "watch": "webpack --watch"
-=======
     "build": "webpack-cli",
     "start": "webpack-dev-server --open",
     "watch": "webpack --watch",
     "express": "node initializers/server/index.js"
->>>>>>> f4b562973ca1aeabeb85a16f6a4bc004ceeae617
   },
   "author": "",
   "license": "ISC",
@@ -45,6 +38,7 @@
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.4.2",
     "prop-types": "^15.6.2",
     "qs": "^6.5.2",
     "redux-devtools-extension": "^2.13.5",
