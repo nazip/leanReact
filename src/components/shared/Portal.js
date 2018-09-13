@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 export default class Portal extends React.Component {

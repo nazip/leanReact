@@ -1,7 +1,7 @@
 import { reduxForm } from 'redux-form';
 import OrderForm from '../forms/OrderForm';
 import order from '../actions/order';
-import { deleteAllItems } from '../actions/basket'; 
+import { clearBasket } from '../actions/basket'; 
 import history from '~/src/history';
 
 const validate = (values) => {
@@ -38,7 +38,7 @@ const warn = (values) => {
 const onSubmit = (values, dispatch) => {
     dispatch(order(JSON.stringify(values))).then(
         (response) => {
-            // dispatch(deleteAllItems());
+            dispatch(clearBasket());
             history.push('/products', {message: 'Order sended !!!'});
         }    
     );

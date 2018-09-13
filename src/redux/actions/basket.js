@@ -15,3 +15,10 @@ export const  delItem = (item, n) =>  {
             quantity: n
     };
 }; 
+
+export const clearBasket = () => {
+    return {
+        type: types.CLEAR_BASKET_SUCCESS
+};
+
+} 

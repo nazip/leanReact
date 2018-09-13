@@ -8,24 +8,13 @@ import history from '~/src/history';
 
 
 class Catalog extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {items: [], apiError: false};
-    }
-   
-    componentDidUpdate() {
-        (this.props.items != this.state.items) &&                  
-            this.setState({items: this.props.items});
-        (this.props.apiError != this.state.apiError) &&
-            this.setState({apiError: true});
-    }
 
     componentDidMount() {
         this.props.fetchItems();
     }
 
     render() {
-        const {items, apiError}  = this.state;
+        const { items, apiError }  = this.props;
         if (items.length == 0 && !apiError) {
             return <Spinner color='blue'/>;
         } else if(apiError) {

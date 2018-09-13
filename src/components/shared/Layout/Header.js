@@ -4,9 +4,7 @@ import {
   NavbarBrand,
   Nav,
   NavItem, NavLink } from 'reactstrap';
-// import NavLink  from './helpers/NavLink';  
 import {catalog, about, root, order} from '~/src/helpers/routes';
-import store from '~/src/redux/store';
 
 export default class Header extends React.Component {
   render() {
