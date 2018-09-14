@@ -1,4 +1,4 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import fetchProduct from '../actions/product';
 import Product from '~/src/components/views/Product';
 

@@ -8,6 +8,14 @@ export const  readItems  = () =>  {
     };
 }; 
 
+export const  clearItems  = () =>  {
+    return {
+        [type.LOCAL_STORAGE]: {
+            action: type.LOCAL_STORAGE_CLEAR,
+        }
+    };
+}; 
+
 export const  addItemToLocalStorage  = (item,n) =>  {
     return {
         [type.LOCAL_STORAGE]: {

@@ -12,7 +12,7 @@ module.exports = {
   },
  
   output: {
-    filename: '[name].bundle.js',
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'public/assets'),
     publicPath: '/assets/'
   },

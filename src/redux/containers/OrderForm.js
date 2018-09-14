@@ -1,7 +1,9 @@
 import { reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
 import OrderForm from '../forms/OrderForm';
 import order from '../actions/order';
 import { clearBasket } from '../actions/basket'; 
+import { clearItems } from '../actions/localStorage'; 
 import history from '~/src/history';
 
 const validate = (values) => {
@@ -39,15 +41,21 @@ const onSubmit = (values, dispatch) => {
     dispatch(order(JSON.stringify(values))).then(
         (response) => {
             dispatch(clearBasket());
+            dispatch(clearItems());
+
             history.push('/products', {message: 'Order sended !!!'});
         }    
     );
 }; 
 
-export default reduxForm({
+const stateToProps = (state) => ({
+    submitStatus: state.order.status
+});
+
+export default connect(stateToProps)(reduxForm({
     form: 'OrderForm',
     onSubmit,
     validate,
     warn
 })  
-(OrderForm);
+(OrderForm));

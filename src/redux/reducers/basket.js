@@ -23,7 +23,7 @@ export default (state = initalState, action) => {
             return Object.assign({}, state, {items: action.items});  
         case type.CLEAR_BASKET_SUCCESS:
             return Object.assign({}, state, {items: []});  
-
-        default: return state; 
+        default: 
+            return state; 
     }
 }
