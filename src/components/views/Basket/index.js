@@ -9,7 +9,6 @@ import { root } from '~/src/helpers/routes';
 class Basket extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {isOpen: false};
         this.itemsQuantity = this.itemsQuantity.bind(this);
     }
 
@@ -18,13 +17,11 @@ class Basket extends React.Component {
     }
 
     toggle(e) {
-        const { isOpen } = this.state;
-        if(!isOpen && this.props.items.length == 0) { 
+        const { isOpen, toggleState, items, } = this.props;
+        if(!isOpen && items.length == 0) { 
             history.push(root(), {message: 'basket empty'});
         }    
-        this.setState({isOpen: !isOpen, 
-                    left: e.clientX,
-                    top: e.clientY}); 
+        toggleState({ left: e.clientX, top: e.clientY});
     }
 
     itemsQuantity() {
@@ -32,8 +29,8 @@ class Basket extends React.Component {
     }
 
     render() {
-        const { left, top, isOpen } = this.state;
-        const { items, delItem } = this.props;
+        const { items, delItem, isOpen, 
+                position: { left, top } } = this.props;
         return (
             <Fragment>
                 {!isOpen && 

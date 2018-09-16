@@ -8,7 +8,6 @@ export default ({items, delItem}) => (
             <th>Наименование</th>    
             <th>Кол-во</th>    
         </tr>    
-        {console.log('items=', items)}
         {items.map((item) => item.quantity > 0 ?
         <tr key={item.id}>
             <td> {item.title}</td> 

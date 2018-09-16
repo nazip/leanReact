@@ -19,6 +19,14 @@ export const  delItem = (item, n) =>  {
 export const clearBasket = () => {
     return {
         type: types.CLEAR_BASKET_SUCCESS
-};
+    };
+}; 
 
-} 
+export const changeBasketState = (position, isOpen) => {
+    return {
+        type: types.CHANGE_BASKET_STATE,
+        position,
+        isOpen
+    };
+}; 
+

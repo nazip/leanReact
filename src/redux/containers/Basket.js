@@ -1,12 +1,14 @@
 import { connect } from 'react-redux';
-import { addItem, delItem } from '../actions/basket';
+import { addItem, delItem, changeBasketState } from '../actions/basket';
 import { readItems, removeItemFromLocalStorage } from '../actions/localStorage';
 import Basket from '~/src/components/views/Basket';
 
 
 const stateToProps = (state)  => (
     {
-        items: state.basket.items
+        items: state.basket.items,
+        isOpen: state.basket.isOpen,
+        position: state.basket.position
     }    
 );
 
@@ -18,6 +20,8 @@ const actionToProps = (dispatch) => (
             dispatch(removeItemFromLocalStorage(item,n));
         },
         readItems: () => dispatch(readItems()),
+        toggleState: (position) => (
+            dispatch(changeBasketState(position))) 
     }    
 );
 

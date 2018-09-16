@@ -1,7 +1,9 @@
 import * as type from '../const/actionTypes/basket';
 import { addItem, delItem } from '../helpers';
 
-const initalState = {items: []};
+const initalState = {items: [], 
+    isOpen: false, 
+    position: {left: 0, top: 0}};
 
 export default (state = initalState, action) => {
     switch(action.type) {
@@ -23,6 +25,11 @@ export default (state = initalState, action) => {
             return Object.assign({}, state, {items: action.items});  
         case type.CLEAR_BASKET_SUCCESS:
             return Object.assign({}, state, {items: []});  
+        case type.CHANGE_BASKET_STATE:
+            return Object.assign({}, state, 
+                {isOpen: !state.isOpen}, 
+                {position: action.position}
+            );  
         default: 
             return state; 
     }
