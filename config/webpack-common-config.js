@@ -1,0 +1,17 @@
+const path = require("path");
+
+module.exports = {
+  resolve: {
+    alias: {
+      '~': process.cwd() 
+    }
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(png|svg|jpg)$/,
+        use: ["file-loader"]
+      }
+    ]
+  }
+};
