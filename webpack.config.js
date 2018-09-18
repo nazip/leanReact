@@ -8,7 +8,7 @@ module.exports = {
   mode: 'development',  
 
   entry: {
-    bundle:  './index.js'
+    bundle:  './src/index.js'
   },
  
   output: {
@@ -25,7 +25,7 @@ module.exports = {
 
   devServer: {
     historyApiFallback: true,
-    // contentBase: './public/assets',
+    contentBase: path.join(process.cwd(), 'public/assets'),
     hot: true  
   },
 

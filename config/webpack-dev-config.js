@@ -1,55 +1,65 @@
-const path = require("path");
-const webpack = require("webpack");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
+const webpack = require('webpack');
+const paths = require('./paths');
 const merge = require("webpack-merge");
-
 const common = require("./webpack-common-config.js");
-
-const root = path.join(process.cwd());
-const src = path.join(root, '/src');
+const path = require('path');
 
 module.exports = merge(common, {
-  entry: path.join(src, 'index.js'),
-  output: {
-     filename: 'bundle.js',
-     path: path.join(root, '/distr'),
-     publicPath: '/assets/'
+  mode: 'development',  
+
+  entry: {
+    bundle:  './src/index.js'
   },
-   mode: "development",
-  // devtool option controls if and how source maps are generated.
-  // see https://webpack.js.org/configuration/devtool/
-  // If you find that you need more control of source map generation,
-  // see https://webpack.js.org/plugins/source-map-dev-tool-plugin/
-  devtool: "eval",
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(),
-    new webpack.DefinePlugin({
-      "process.env": {
-        NODE_ENV: JSON.stringify("development")
-      }
-    })
-  ],
+ 
+  output: {
+    filename: 'bundle.js',
+    path: paths.appOutputDev,
+    publicPath: '/assets/'
+  },
+   
+  devServer: {
+    historyApiFallback: true,
+    hot: true  
+  },
+
+  devtool: 'inline-source-map',
+
   module: {
     rules: [
-      {
-        test: /\.(js|jsx)$/,
-        include: src,
-        exclude: /(node_modules)/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/react", '@babel/preset-env']
-          }
-        }
-      },
-      {
-        test: /\.css$/,
-        use: [
-          { loader: "style-loader" },
-          { loader: "css-loader" }
-        ]
-      }            
+        {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: {
+              loader: 'babel-loader',
+              options: {
+                presets: ['@babel/preset-env']
+              }
+            }
+        },
+        {
+            test: /\.css$/,
+            use: [
+              { loader: "style-loader" },
+              { loader: "css-loader" }
+            ]
+        }              
     ]
-  }
-});
+  },
 
+  plugins: [
+    new ManifestPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new CleanWebpackPlugin([paths.appOutputDev],{
+      root: paths.appRoot,
+      verbose: true,
+      dry: false
+    }),
+    new HtmlWebpackPlugin({
+       title: 'Development',
+       template: paths.appDevHtmlTemplate
+    })    
+  ]
+});

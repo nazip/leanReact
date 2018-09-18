@@ -4,11 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:dev": "yarn clean; webpack --config config/webpack-dev-config.js",
-    "build": "yarn clean; webpack --config config/webpack-prod-config.js",
-    "clean": "rm -rf build/*",
-    "dev": "node config/webpack-dev-server.js",
-    "prod": "yarn build; serve build"  
+    "dev": "webpack-dev-server --open --config config/webpack-dev-config.js",
+    "dev:build": "webpack --config config/webpack-dev-config.js"
   },
   "author": "",
   "license": "ISC",
