@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --open --config config/webpack-dev-config.js",
-    "dev:build": "webpack --config config/webpack-dev-config.js"
+    "dev:start": "webpack-dev-server --open --config config/webpack-dev-config.js",
+    "prod:express": "node ./initializers/server/index.js",
+    "dev:build": "webpack --config config/webpack-dev-config.js",
+    "prod:build": "webpack --config config/webpack-prod-config.js"
   },
   "author": "",
   "license": "ISC",
