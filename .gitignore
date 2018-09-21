@@ -8,3 +8,4 @@ output/
 public/
 yarn*
 package-lock.json
+pm2.config.js

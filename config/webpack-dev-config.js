@@ -4,8 +4,6 @@ const webpack = require('webpack');
 const paths = require('./paths');
 const merge = require("webpack-merge");
 const common = require("./webpack-common-config.js");
-const path = require('path');
-const ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = merge(common, {
   mode: 'development',  
@@ -50,7 +48,6 @@ module.exports = merge(common, {
   },
 
   plugins: [
-    new ManifestPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new CleanWebpackPlugin([paths.appOutputDev],{
       root: paths.appRoot,

@@ -1,11 +1,12 @@
 <!doctype html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="<%- webpackAsset('vendors~app.css') %>">
         <link rel="stylesheet" type="text/css" href="<%- webpackAsset('app.css') %>">
     </head>    
     <body>
-        <script src="<%- webpackAsset('vendor.js') %>"></script>
-        <script src="<%- webpackAsset('app.js') %>"></script>
         <div id="root"></div>
+        <script src="<%- webpackAsset('vendors~app.js') %>"></script>
+        <script src="<%- webpackAsset('app.js') %>"></script>
     </body>
 </html>

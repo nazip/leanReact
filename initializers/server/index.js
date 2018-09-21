@@ -6,7 +6,7 @@ const manifest = require('../../output/production/manifest.json');
 
 const webpackAsset = (bundle) => manifest[bundle];
 
-app.use(express.static('output/production'));
+app.use(express.static('output'));
 
 app.set('views', __dirname);
 app.set('view engine', 'ejs');
